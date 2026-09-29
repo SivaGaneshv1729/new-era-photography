@@ -2,9 +2,7 @@ import React, { useEffect } from 'react';
 import Lenis from 'lenis';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import Services from './components/Services';
-import Features from './components/Gallery';
-import ArcGallery from './components/About';
+import Gallery from './components/Gallery';
 import Footer from './components/Contact';
 import './index.css';
 
@@ -29,9 +27,7 @@ function App() {
       <Navbar />
       <main>
         <Hero />
-        <Services />
-        <Features />
-        <ArcGallery />
+        <Gallery />
       </main>
       <Footer />
     </>

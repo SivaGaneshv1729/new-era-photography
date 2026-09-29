@@ -136,17 +136,28 @@ const ExpandingCards = () => {
 
   return (
     <>
-      <section id="gallery" style={{ paddingBottom: '50px', paddingTop: '50px' }}>
-        <motion.h2
-          className="display-text"
-          style={{ textAlign: 'center', fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '10px' }}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-        >
-          OUR WORKS
-        </motion.h2>
+      <section id="gallery" style={{ paddingBottom: '120px', paddingTop: '120px' }}>
+        <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+          <motion.h2
+            className="display-text"
+            style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', margin: '0 0 10px 0' }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+          >
+            OUR WORKS
+          </motion.h2>
+          <motion.p
+            style={{ color: 'var(--primary-red)', textTransform: 'uppercase', letterSpacing: '4px', fontWeight: 'bold', fontSize: '14px', margin: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            Explore our visual journeys
+          </motion.p>
+        </div>
         <ul
           className="expanding-cards-container"
           style={{

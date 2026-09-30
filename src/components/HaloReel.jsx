@@ -6,18 +6,18 @@ const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
 
 export function HaloReel({
   items,
-  cardWidth = 250,
-  cardHeight = 350,
+  cardWidth = 130,
+  cardHeight = 180,
   minScale = 0.4,
   radiusXRatio = 0.45,
-  centerXRatio = 1, // FLIPPED TO RIGHT
-  radiusYRatio = 0.4,
+  centerXRatio = 0, // 0 pins it to the left edge
+  radiusYRatio = 0.36,
   autoPlay = true,
-  holdDuration = 2000,
-  stepDuration = 1000,
+  holdDuration = 1000,
+  stepDuration = 700,
   pauseOnHover = true,
   draggable = true,
-  spread = 1.3,
+  spread = 1.2,
   maxCards = 64,
   dragSensitivity = 1,
   centerLabel,
@@ -89,7 +89,7 @@ export function HaloReel({
         }
         controls = animate(rotation, rotation.get() - step, {
           duration: stepDuration / 1000,
-          ease: [0.4, 0, 0.2, 1],
+          ease: holdDuration === 0 ? "linear" : [0.4, 0, 0.2, 1],
           onComplete: tick,
         });
       }, holdDuration);
@@ -195,14 +195,15 @@ export function HaloReel({
           style={{
             pointerEvents: 'none',
             position: 'absolute',
-            inset: '0px',
+            top: 0,
+            bottom: 0,
             zIndex: 0,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            padding: '0 80px', // Extra padding for breathing room
-            right: radiusX + cardW / 2 + 50, // Ensures text stays completely on the left half
-            left: 0
+            padding: '0 40px',
+            left: size.w * centerXRatio + radiusX + cardW / 2,
+            right: 0
           }}
         >
           <div style={{ pointerEvents: 'auto', width: '100%' }}>

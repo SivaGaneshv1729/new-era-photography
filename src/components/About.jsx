@@ -17,27 +17,6 @@ const About = () => {
   const AboutText = (
     <div style={{ maxWidth: '650px', textAlign: 'left' }}>
       <motion.p
-        style={{ color: 'var(--primary-red)', textTransform: 'uppercase', letterSpacing: '4px', fontWeight: 'bold', fontSize: '14px', margin: '0 0 10px 0' }}
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6 }}
-      >
-        The Origin
-      </motion.p>
-      
-      <motion.h2
-        className="display-text"
-        style={{ fontSize: 'clamp(3rem, 5vw, 4.5rem)', margin: '0 0 30px 0', lineHeight: 1 }}
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-      >
-        WHY WE DO WHAT WE DO
-      </motion.h2>
-
-      <motion.p
         style={{ fontSize: '18px', lineHeight: 1.8, color: '#ccc', marginBottom: '20px' }}
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -60,15 +39,43 @@ const About = () => {
   );
 
   return (
-    <section id="about" style={{ position: 'relative', overflow: 'hidden', backgroundColor: 'var(--bg-black)', paddingTop: '250px' }}>
-      <HaloReel 
-        items={galleryImages}
-        centerLabel={AboutText}
-        cardWidth={200}
-        cardHeight={280}
-        radiusYRatio={0.5}
-        spread={1.5}
-      />
+    <section id="about" style={{ position: 'relative', overflow: 'hidden', backgroundColor: 'var(--bg-black)', paddingTop: '150px' }}>
+      
+      {/* Centered Title */}
+      <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+        <motion.p
+          style={{ color: 'var(--primary-red)', textTransform: 'uppercase', letterSpacing: '4px', fontWeight: 'bold', fontSize: '14px', margin: '0 0 10px 0' }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+        >
+          The Origin
+        </motion.p>
+        
+        <motion.h2
+          className="display-text"
+          style={{ fontSize: 'clamp(3rem, 5vw, 4.5rem)', margin: 0, lineHeight: 1 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
+          WHY WE DO WHAT WE DO
+        </motion.h2>
+      </div>
+
+      <div style={{ position: 'relative' }}>
+        <HaloReel 
+          items={galleryImages}
+          centerLabel={AboutText}
+          cardWidth={160}
+          cardHeight={230}
+          holdDuration={0}
+          stepDuration={3000}
+        />
+      </div>
+
     </section>
   );
 };

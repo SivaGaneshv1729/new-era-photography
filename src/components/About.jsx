@@ -1,47 +1,76 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import HaloReel from './HaloReel';
 
-const arcImages = [
-  "https://images.unsplash.com/photo-1526405785089-68bf49298e82?q=80&w=400&auto=format&fit=crop", // surfer
-  "https://images.unsplash.com/photo-1541252876615-56f8f533a1e0?q=80&w=400&auto=format&fit=crop", // cyclist
-  "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?q=80&w=400&auto=format&fit=crop", // skier
-  "https://images.unsplash.com/photo-1522046429532-a5ecb68ef534?q=80&w=400&auto=format&fit=crop", // hiker
-  "https://images.unsplash.com/photo-1517502884422-41eaead166d4?q=80&w=400&auto=format&fit=crop"  // golfer
+const galleryImages = [
+  { src: "/Cover/Short films.png", alt: "Short films" },
+  { src: "/Cover/product.jpg.jpeg", alt: "Product" },
+  { src: "/Cover/fashion.jpg.jpeg", alt: "Fashion" },
+  { src: "/Cover/food.jpg.jpeg", alt: "Food" },
+  { src: "/Cover/Documentary.jpg.jpeg", alt: "Documentaries" },
+  { src: "/Cover/interior architecture.jpg.jpeg", alt: "Architecture" },
+  { src: "/Cover/sports.WEBP", alt: "Sports" },
+  { src: "/Cover/wildlife.jpg.jpeg", alt: "Wildlife" },
 ];
 
-const ArcGallery = () => {
-  return (
-    <section className="arc-gallery" id="gallery">
-      <div className="arc-container">
-        {arcImages.map((src, index) => (
-          <motion.div 
-            className="arc-item" 
-            key={index}
-            initial={{ opacity: 0, y: 100 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
-            whileHover={{ scale: 1.1, zIndex: 10 }}
-          >
-            <img src={src} alt={`Arc gallery item ${index + 1}`} />
-          </motion.div>
-        ))}
-      </div>
+const About = () => {
+  const AboutText = (
+    <div style={{ maxWidth: '650px', textAlign: 'left' }}>
+      <motion.p
+        style={{ color: 'var(--primary-red)', textTransform: 'uppercase', letterSpacing: '4px', fontWeight: 'bold', fontSize: '14px', margin: '0 0 10px 0' }}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+      >
+        The Origin
+      </motion.p>
       
-      <motion.img 
-        src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop" 
-        alt="Main Camera" 
-        className="arc-camera"
-        style={{ mixBlendMode: 'screen', borderRadius: '30px' }}
-        initial={{ opacity: 0, scale: 0.8 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, type: "spring" }}
-        animate={{ y: [0, -20, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+      <motion.h2
+        className="display-text"
+        style={{ fontSize: 'clamp(3rem, 5vw, 4.5rem)', margin: '0 0 30px 0', lineHeight: 1 }}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6, delay: 0.1 }}
+      >
+        WHY WE DO WHAT WE DO
+      </motion.h2>
+
+      <motion.p
+        style={{ fontSize: '18px', lineHeight: 1.8, color: '#ccc', marginBottom: '20px' }}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
+        New Era Photography was born from a simple belief: every fleeting moment holds a story worth preserving. We started in a small studio with nothing but a vintage lens and an obsession for finding the extraordinary in the everyday.
+      </motion.p>
+
+      <motion.p
+        style={{ fontSize: '18px', lineHeight: 1.8, color: '#ccc' }}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+      >
+        To us, photography is more than just pressing a shutter. It is the art of freezing time, capturing raw emotion, and painting with light. Whether it’s the quiet intimacy of a short film or the high-energy pulse of a fashion shoot, we pour our soul into ensuring your legacy is immortalized in its truest, most beautiful form.
+      </motion.p>
+    </div>
+  );
+
+  return (
+    <section id="about" style={{ position: 'relative', overflow: 'hidden', backgroundColor: 'var(--bg-black)', paddingTop: '250px' }}>
+      <HaloReel 
+        items={galleryImages}
+        centerLabel={AboutText}
+        cardWidth={200}
+        cardHeight={280}
+        radiusYRatio={0.5}
+        spread={1.5}
       />
     </section>
   );
 };
 
-export default ArcGallery;
+export default About;

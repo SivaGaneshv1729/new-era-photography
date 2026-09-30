@@ -36,7 +36,7 @@ const Hero = () => {
         loop 
         muted 
         playsInline
-        src="/hero-video.mp4"
+        src="https://res.cloudinary.com/ngnxyvnm/video/upload/v1790794686/hero-video.mp4"
         style={{
           position: 'absolute',
           top: 0,

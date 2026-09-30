@@ -3,6 +3,7 @@ import Lenis from 'lenis';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Gallery from './components/Gallery';
+import InfiniteGallery from './components/InfiniteGallery';
 import Footer from './components/Contact';
 import './index.css';
 
@@ -28,6 +29,7 @@ function App() {
       <main>
         <Hero />
         <Gallery />
+        <InfiniteGallery />
       </main>
       <Footer />
     </>

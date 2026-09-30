@@ -8,7 +8,8 @@ import {
   ArrowLeft,
   Building,
   Target,
-  Leaf
+  Leaf,
+  X
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import MasonryGrid from "./MasonryGrid";
@@ -18,15 +19,15 @@ const items = [
   {
     id: 1,
     title: "Short Films",
-    description: "Capture the most beautiful moments of your special day with our cinematic approach.",
-    imgSrc: "/cover/Short films.png",
+    description: "Cinematic moments capturing your special day.",
+    imgSrc: "/Cover/Short films.png",
     icon: <Heart size={24} />,
     linkHref: "#",
   },
   {
     id: 2,
     title: "Product",
-    description: "Compelling storytelling through stunning visuals and professional cinematography.",
+    description: "Stunning visuals and professional product cinematography.",
     imgSrc: "/Cover/product.jpg.jpeg",
     icon: <Video size={24} />,
     linkHref: "#",
@@ -34,7 +35,7 @@ const items = [
   {
     id: 3,
     title: "Fashion",
-    description: "Preserve the joy and laughter of your celebrations with vibrant photography.",
+    description: "Vibrant photography elevating your fashion identity.",
     imgSrc: "/Cover/fashion.jpg.jpeg",
     icon: <Gift size={24} />,
     linkHref: "#",
@@ -42,7 +43,7 @@ const items = [
   {
     id: 4,
     title: "Food",
-    description: "High-end editorial fashion shoots tailored to elevate your brand identity.",
+    description: "Mouthwatering culinary visuals for your brand.",
     imgSrc: "/Cover/food.jpg.jpeg",
     icon: <Camera size={24} />,
     linkHref: "#",
@@ -50,7 +51,7 @@ const items = [
   {
     id: 5,
     title: "Documentaries",
-    description: "Raw, authentic, and powerful visual documentation of real-world stories.",
+    description: "Raw and authentic real-world storytelling.",
     imgSrc: "/Cover/Documentary.jpg.jpeg",
     icon: <Mountain size={24} />,
     linkHref: "#",
@@ -58,7 +59,7 @@ const items = [
   {
     id: 6,
     title: "Architecture",
-    description: "Striking interior and exterior structural photography that highlights design.",
+    description: "Striking structural photography highlighting modern design.",
     imgSrc: "/Cover/interior architecture.jpg.jpeg",
     icon: <Building size={24} />,
     linkHref: "#",
@@ -66,7 +67,7 @@ const items = [
   {
     id: 7,
     title: "Sports",
-    description: "High-energy, dynamic action shots that freeze the perfect moment in time.",
+    description: "Dynamic action shots freezing perfect moments.",
     imgSrc: "/Cover/sports.WEBP",
     icon: <Target size={24} />,
     linkHref: "#",
@@ -74,7 +75,7 @@ const items = [
   {
     id: 8,
     title: "Wildlife",
-    description: "Breathtaking glimpses into the natural world, capturing untamed beauty.",
+    description: "Breathtaking glimpses capturing untamed natural beauty.",
     imgSrc: "/Cover/wildlife.jpg.jpeg",
     icon: <Leaf size={24} />,
     linkHref: "#",
@@ -98,6 +99,7 @@ const ExpandingCards = () => {
   const [activeIndex, setActiveIndex] = React.useState(0);
   const [isDesktop, setIsDesktop] = React.useState(false);
   const [selectedGallery, setSelectedGallery] = React.useState(null);
+  const [enlargedImage, setEnlargedImage] = React.useState(null);
 
   React.useEffect(() => {
     const handleResize = () => {
@@ -230,35 +232,124 @@ const ExpandingCards = () => {
             exit={{ opacity: 0, y: 50 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
           >
-            <div className="masonry-modal-header">
-              <button className="close-modal-btn" onClick={closeGallery}>
-                <ArrowLeft size={20} /> Back to Categories
-              </button>
-              <motion.h2
-                className="display-text"
-                style={{ fontSize: '3rem', margin: 0 }}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2 }}
+            <div className="masonry-modal-header" style={{ alignItems: 'flex-start' }}>
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
+                <motion.h2
+                  className="display-text"
+                  style={{ fontSize: '4rem', margin: 0, lineHeight: 1 }}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.2 }}
+                >
+                  {selectedGallery.title}
+                </motion.h2>
+                <motion.p
+                  style={{ color: 'var(--primary-red)', marginTop: '15px', fontSize: '15px', maxWidth: '600px', letterSpacing: '1px', textTransform: 'uppercase' }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                >
+                  {selectedGallery.description}
+                </motion.p>
+              </div>
+              <button
+                onClick={closeGallery}
+                style={{
+                  background: 'rgba(255,255,255,0.1)',
+                  border: 'none',
+                  color: 'white',
+                  padding: '12px',
+                  borderRadius: '50%',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  transition: 'background 0.3s'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.background = 'var(--primary-red)'}
+                onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
               >
-                {selectedGallery.title}
-              </motion.h2>
+                <X size={28} />
+              </button>
             </div>
 
             <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
               <MasonryGrid
                 items={dummyImages}
-                gap="20px"
+                gap="10px"
                 staggerDelay={0.1}
                 renderItem={(img, i) => (
                   <img
                     src={img}
                     alt={`Gallery image ${i}`}
-                    style={{ width: '100%', display: 'block', borderRadius: '12px' }}
+                    style={{ width: '100%', display: 'block', borderRadius: '8px', cursor: 'pointer' }}
+                    onClick={() => setEnlargedImage(img)}
                   />
                 )}
               />
             </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Enlarged Single Image Modal */}
+      <AnimatePresence>
+        {enlargedImage && (
+          <motion.div
+            style={{
+              position: 'fixed',
+              inset: 0,
+              backgroundColor: 'rgba(0,0,0,0.95)',
+              zIndex: 2000,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '40px'
+            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setEnlargedImage(null)}
+          >
+            <button
+              onClick={() => setEnlargedImage(null)}
+              style={{
+                position: 'absolute',
+                top: '40px',
+                right: '40px',
+                background: 'rgba(255,255,255,0.1)',
+                border: 'none',
+                color: 'white',
+                padding: '10px',
+                borderRadius: '50%',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backdropFilter: 'blur(10px)',
+                transition: 'background 0.3s'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.background = 'var(--primary-red)'}
+              onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
+            >
+              <X size={28} />
+            </button>
+            <motion.img
+              src={enlargedImage}
+              alt="Enlarged gallery view"
+              style={{
+                maxWidth: '100%',
+                maxHeight: '100%',
+                borderRadius: '8px',
+                boxShadow: '0 20px 50px rgba(0,0,0,0.5)',
+                objectFit: 'contain'
+              }}
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              onClick={(e) => e.stopPropagation()} // Prevent closing when clicking the image itself
+            />
           </motion.div>
         )}
       </AnimatePresence>

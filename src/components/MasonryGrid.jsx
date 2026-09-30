@@ -10,32 +10,20 @@ import {
 const GridItem = ({ children }) => {
   const ref = React.useRef(null);
 
-  // Motion values to track mouse position
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  // Spring animations for smoother transform changes
   const mouseXSpring = useSpring(x, { stiffness: 300, damping: 20 });
   const mouseYSpring = useSpring(y, { stiffness: 300, damping: 20 });
 
-  // Transform mouse position into 3D rotation
-  const rotateX = useTransform(
-    mouseYSpring,
-    [-0.5, 0.5],
-    ['10deg', '-10deg']
-  );
-  const rotateY = useTransform(
-    mouseXSpring,
-    [-0.5, 0.5],
-    ['-10deg', '10deg']
-  );
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ['10deg', '-10deg']);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ['-10deg', '10deg']);
 
   const handleMouseMove = (e) => {
     if (!ref.current) return;
     const { left, top, width, height } = ref.current.getBoundingClientRect();
     const mouseX = e.clientX - left;
     const mouseY = e.clientY - top;
-    // Normalize mouse position to a range of -0.5 to 0.5
     x.set(mouseX / width - 0.5);
     y.set(mouseY / height - 0.5);
   };
@@ -53,6 +41,9 @@ const GridItem = ({ children }) => {
       style={{
         transformStyle: 'preserve-3d',
         perspective: '1000px',
+        pointerEvents: 'auto', // Fix click propagation
+        position: 'relative',
+        zIndex: 1
       }}
       className="masonry-grid-item-wrapper"
     >
@@ -63,6 +54,7 @@ const GridItem = ({ children }) => {
           transformStyle: 'preserve-3d',
         }}
         whileTap={{ scale: 0.95 }}
+        whileHover={{ zIndex: 10 }} // Ensure hovered item is clickable above others
         className="masonry-grid-item-inner"
       >
         {children}

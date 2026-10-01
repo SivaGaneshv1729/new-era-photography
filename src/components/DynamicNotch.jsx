@@ -26,30 +26,6 @@ const NotchRightWing = ({ className, style }) => (
   </svg>
 );
 
-const NotchCornerLeftWing = ({ className, style }) => (
-  <svg
-    width="24"
-    height="24"
-    viewBox="0 0 20 20"
-    className={className}
-    style={{ position: 'absolute', left: 0, top: '100%', fill: 'var(--bg-black)', pointerEvents: 'none', ...style }}
-  >
-    <path d="M 0 0 H 20 C 8.954 0 0 8.954 0 20 V 0 Z" />
-  </svg>
-);
-
-const NotchCornerRightWing = ({ className, style }) => (
-  <svg
-    width="24"
-    height="24"
-    viewBox="0 0 20 20"
-    className={className}
-    style={{ position: 'absolute', right: 0, top: '100%', fill: 'var(--bg-black)', pointerEvents: 'none', ...style }}
-  >
-    <path d="M 20 0 H 0 C 11.046 0 20 8.954 20 20 V 0 Z" />
-  </svg>
-);
-
 const navItems = [
   { id: 'home', label: 'Home', href: '#home' },
   { id: 'about', label: 'About', href: '#about' },
@@ -79,41 +55,33 @@ const DynamicNotch = () => {
   const activeItem = navItems.find(item => item.id === activeId) || navItems[0];
 
   return (
-    <div style={{ zIndex: 1000, position: 'relative' }}>
+    <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 1000, pointerEvents: 'none' }}>
       
       {/* ========================================================================= */}
-      {/* DESKTOP VIEW (> 1280px): 3 SEPARATE NOTCHES                               */}
+      {/* DESKTOP VIEW (> 1280px): FLOATING LOGO/BTN & CENTER NOTCH                 */}
       {/* ========================================================================= */}
       {!isMobile && (
-        <>
-          {/* 1. Desktop Left Logo Notch */}
-          <aside
-            style={{
-              position: 'fixed',
-              left: 0,
-              top: 0,
-              height: '70px',
-              padding: '0 32px',
-              backgroundColor: 'var(--bg-black)',
-              borderBottomRightRadius: '28px',
-              display: 'flex',
-              alignItems: 'center',
-              userSelect: 'none',
-              boxShadow: '0 10px 40px rgba(0,0,0,0.5)',
-              zIndex: 1000
+        <div style={{ position: 'relative', width: '100%', height: '100px', padding: '0 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', paddingTop: '20px' }}>
+          
+          {/* Left: Floating Logo */}
+          <div 
+            className="display-text" 
+            style={{ 
+              fontSize: '28px', 
+              letterSpacing: '2px', 
+              color: 'white', 
+              fontWeight: 'bold', 
+              pointerEvents: 'auto',
+              textShadow: '0 2px 10px rgba(0,0,0,0.5)'
             }}
           >
-            <div className="display-text" style={{ fontSize: '28px', letterSpacing: '2px', color: 'white', fontWeight: 'bold' }}>
-              NEW ERA
-            </div>
-            <NotchRightWing />
-            <NotchCornerLeftWing />
-          </aside>
+            NEW ERA
+          </div>
 
-          {/* 2. Desktop Center Menu Notch */}
+          {/* Center: The Black Notch */}
           <header
             style={{
-              position: 'fixed',
+              position: 'absolute',
               left: '50%',
               top: 0,
               transform: 'translateX(-50%)',
@@ -126,7 +94,7 @@ const DynamicNotch = () => {
               alignItems: 'center',
               userSelect: 'none',
               boxShadow: '0 10px 40px rgba(0,0,0,0.5)',
-              zIndex: 1000
+              pointerEvents: 'auto'
             }}
           >
             <NotchLeftWing />
@@ -175,57 +143,48 @@ const DynamicNotch = () => {
             </LayoutGroup>
           </header>
 
-          {/* 3. Desktop Right Action Notch */}
-          <aside
+          {/* Right: Floating Action Button */}
+          <a 
+            href="#contact"
             style={{
-              position: 'fixed',
-              right: 0,
-              top: 0,
-              height: '70px',
-              padding: '0 32px',
-              backgroundColor: 'var(--bg-black)',
-              borderBottomLeftRadius: '28px',
-              display: 'flex',
-              alignItems: 'center',
-              userSelect: 'none',
-              boxShadow: '0 10px 40px rgba(0,0,0,0.5)',
-              zIndex: 1000
+              color: 'white',
+              border: '2px solid rgba(255,255,255,0.2)',
+              backgroundColor: 'rgba(0,0,0,0.4)',
+              backdropFilter: 'blur(10px)',
+              padding: '12px 30px',
+              borderRadius: '30px',
+              fontSize: '15px',
+              textTransform: 'uppercase',
+              letterSpacing: '1px',
+              fontWeight: 'bold',
+              textDecoration: 'none',
+              transition: 'all 0.3s ease',
+              pointerEvents: 'auto'
+            }}
+            onMouseEnter={(e) => { 
+              e.currentTarget.style.backgroundColor = 'white'; 
+              e.currentTarget.style.color = 'var(--bg-black)'; 
+              e.currentTarget.style.borderColor = 'white';
+            }}
+            onMouseLeave={(e) => { 
+              e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.4)'; 
+              e.currentTarget.style.color = 'white'; 
+              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)';
             }}
           >
-            <NotchLeftWing />
-            <NotchCornerRightWing />
-            
-            <a 
-              href="#contact"
-              style={{
-                color: 'var(--bg-black)',
-                backgroundColor: 'white',
-                padding: '12px 24px',
-                borderRadius: '30px',
-                fontSize: '15px',
-                textTransform: 'uppercase',
-                letterSpacing: '1px',
-                fontWeight: 'bold',
-                textDecoration: 'none',
-                transition: 'background 0.3s, color 0.3s'
-              }}
-              onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'var(--primary-red)'; e.currentTarget.style.color = 'white'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'white'; e.currentTarget.style.color = 'var(--bg-black)'; }}
-            >
-              Book Now
-            </a>
-          </aside>
-        </>
+            Book Now
+          </a>
+        </div>
       )}
 
       {/* ========================================================================= */}
       {/* TABLET & MOBILE VIEW (<= 1280px): SINGLE COMPACT NOTCH ISLAND             */}
       {/* ========================================================================= */}
       {isMobile && (
-        <>
+        <div style={{ position: 'relative', width: '100%', pointerEvents: 'auto' }}>
           <div
             style={{
-              position: 'fixed',
+              position: 'absolute',
               left: '50%',
               top: 0,
               transform: 'translateX(-50%)',
@@ -337,7 +296,7 @@ const DynamicNotch = () => {
               />
             )}
           </AnimatePresence>
-        </>
+        </div>
       )}
     </div>
   );

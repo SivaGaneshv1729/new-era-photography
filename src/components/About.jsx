@@ -14,8 +14,17 @@ const galleryImages = [
 ];
 
 const About = () => {
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 1024);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const AboutText = (
-    <div style={{ maxWidth: '650px', textAlign: 'left' }}>
+    <div style={{ maxWidth: isMobile ? '100%' : '650px', textAlign: isMobile ? 'center' : 'left' }}>
       <motion.p
         style={{ fontSize: '18px', lineHeight: 1.8, color: '#ccc', marginBottom: '20px' }}
         initial={{ opacity: 0, y: 20 }}
@@ -42,7 +51,7 @@ const About = () => {
     <section id="about" style={{ position: 'relative', overflow: 'hidden', backgroundColor: 'var(--bg-black)', paddingTop: '150px' }}>
       
       {/* Centered Title */}
-      <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+      <div style={{ textAlign: 'center', marginBottom: '60px', padding: '0 20px' }}>
         <motion.p
           style={{ color: 'var(--primary-red)', textTransform: 'uppercase', letterSpacing: '4px', fontWeight: 'bold', fontSize: '14px', margin: '0 0 10px 0' }}
           initial={{ opacity: 0, y: 20 }}
@@ -55,7 +64,7 @@ const About = () => {
         
         <motion.h2
           className="display-text"
-          style={{ fontSize: 'clamp(3rem, 5vw, 4.5rem)', margin: 0, lineHeight: 1 }}
+          style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', margin: 0, lineHeight: 1 }}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -65,15 +74,23 @@ const About = () => {
         </motion.h2>
       </div>
 
-      <div style={{ position: 'relative' }}>
+      <div style={{ position: 'relative', display: 'flex', flexDirection: 'column' }}>
         <HaloReel 
           items={galleryImages}
-          centerLabel={AboutText}
-          cardWidth={160}
-          cardHeight={230}
+          centerLabel={isMobile ? null : AboutText}
+          centerXRatio={isMobile ? 0.5 : 0}
+          cardWidth={isMobile ? 120 : 160}
+          cardHeight={isMobile ? 170 : 230}
           holdDuration={0}
           stepDuration={3000}
+          style={{ height: isMobile ? '400px' : '100dvh' }}
         />
+        
+        {isMobile && (
+          <div style={{ padding: '0 30px', paddingBottom: '80px', marginTop: '20px' }}>
+            {AboutText}
+          </div>
+        )}
       </div>
 
     </section>

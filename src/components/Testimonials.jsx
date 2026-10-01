@@ -87,20 +87,20 @@ const Testimonials = () => {
           <div style={{ position: 'absolute', top: 0, bottom: 0, left: 0, width: '150px', background: 'linear-gradient(to right, var(--bg-black), transparent)', zIndex: 10, pointerEvents: 'none' }} />
           <div style={{ position: 'absolute', top: 0, bottom: 0, right: 0, width: '150px', background: 'linear-gradient(to left, var(--bg-black), transparent)', zIndex: 10, pointerEvents: 'none' }} />
 
-          <InfiniteSlider gap={30} duration={60} durationOnHover={200}>
+          <InfiniteSlider gap={16} duration={60} durationOnHover={200}>
             {testimonials.map((testimonial) => (
               <div 
                 key={testimonial.id} 
                 className="testimonial-card"
                 style={{
-                  width: '380px',
-                  padding: '40px',
+                  width: '300px',
+                  padding: '24px',
                   backgroundColor: 'rgba(255, 255, 255, 0.03)',
                   border: '1px solid rgba(255, 255, 255, 0.08)',
-                  borderRadius: '24px',
+                  borderRadius: '20px',
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: '24px',
+                  gap: '16px',
                   position: 'relative',
                   overflow: 'hidden'
                 }}
@@ -116,19 +116,19 @@ const Testimonials = () => {
                 </div>
 
                 {/* Testimonial Text */}
-                <p style={{ fontSize: '1.1rem', lineHeight: '1.7', color: 'rgba(255,255,255,0.9)', margin: 0, zIndex: 1 }}>
+                <p style={{ fontSize: '0.95rem', lineHeight: '1.6', color: 'rgba(255,255,255,0.9)', margin: 0, zIndex: 1 }}>
                   "{testimonial.testimonial}"
                 </p>
 
                 {/* User Info */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginTop: 'auto', paddingTop: '20px', borderTop: '1px solid rgba(255,255,255,0.1)', zIndex: 1 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginTop: 'auto', paddingTop: '16px', borderTop: '1px solid rgba(255,255,255,0.1)', zIndex: 1 }}>
                   <img 
                     src={testimonial.avatar} 
                     alt={testimonial.name}
-                    style={{ width: '50px', height: '50px', borderRadius: '50%', objectFit: 'cover' }}
+                    style={{ width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover' }}
                   />
                   <div>
-                    <h4 className="display-text" style={{ margin: '0 0 4px 0', fontSize: '1.2rem', letterSpacing: '1px' }}>
+                    <h4 className="display-text" style={{ margin: '0 0 2px 0', fontSize: '1rem', letterSpacing: '1px' }}>
                       {testimonial.name}
                     </h4>
                     <span style={{ fontSize: '12px', textTransform: 'uppercase', letterSpacing: '1px', color: 'var(--text-muted)' }}>

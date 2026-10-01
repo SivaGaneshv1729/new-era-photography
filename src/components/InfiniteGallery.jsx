@@ -18,17 +18,6 @@ const images = [
 const InfiniteGallery = () => {
   const [enlargedImage, setEnlargedImage] = useState(null);
   const [showFullGallery, setShowFullGallery] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  React.useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  const cardWidth = isMobile ? '240px' : '330px';
-  const cardHeight = isMobile ? '160px' : '220px';
 
   return (
     <>
@@ -59,7 +48,7 @@ const InfiniteGallery = () => {
         {/* Set durationOnHover to a huge number to effectively pause it */}
         <InfiniteSlider gap={1} duration={40} durationOnHover={100000}>
           {images.map((src, idx) => (
-            <div key={idx} style={{ height: cardHeight, width: cardWidth, flexShrink: 0, borderRadius: '12px', overflow: 'hidden', position: 'relative' }}>
+            <div key={idx} className="infinite-slider-card" style={{ flexShrink: 0, borderRadius: '12px', overflow: 'hidden', position: 'relative' }}>
               <img 
                 src={src} 
                 alt={`Gallery preview ${idx}`} 
@@ -77,7 +66,7 @@ const InfiniteGallery = () => {
         {/* Slider 2 - Right to left (reversed) */}
         <InfiniteSlider gap={1} duration={45} reverse durationOnHover={100000}>
           {[...images].reverse().map((src, idx) => (
-            <div key={idx} style={{ height: cardHeight, width: cardWidth, flexShrink: 0, borderRadius: '12px', overflow: 'hidden', position: 'relative' }}>
+            <div key={idx} className="infinite-slider-card" style={{ flexShrink: 0, borderRadius: '12px', overflow: 'hidden', position: 'relative' }}>
               <img 
                 src={src} 
                 alt={`Gallery preview reverse ${idx}`} 

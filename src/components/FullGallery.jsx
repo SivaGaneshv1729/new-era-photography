@@ -2,7 +2,6 @@ import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import MasonryGrid from "./MasonryGrid";
-import '../index.css';
 
 const allImages = [
   "/Cover/Short films.png",
@@ -24,35 +23,81 @@ const allImages = [
   "https://images.unsplash.com/photo-1478146896981-b80fe463b330?q=80&w=600&h=900&fit=crop"
 ];
 
-const FullGallery = () => {
+const FullGallery = ({ onClose }) => {
   const [enlargedImage, setEnlargedImage] = React.useState(null);
+
+  // Prevent scrolling when modal is open
+  React.useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, []);
 
   return (
     <>
-      <section id="full-gallery" style={{ paddingBottom: '120px', paddingTop: '120px', backgroundColor: 'var(--bg-black)' }}>
-        <div style={{ textAlign: 'center', marginBottom: '80px' }}>
-          <motion.h2
-            className="display-text"
-            style={{ fontSize: 'clamp(3rem, 5vw, 4.5rem)', margin: '0 0 10px 0' }}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6 }}
+      <motion.div
+        className="masonry-modal-overlay"
+        style={{
+          position: 'fixed',
+          inset: 0,
+          backgroundColor: 'var(--bg-black)',
+          zIndex: 1000,
+          overflowY: 'auto',
+          padding: '40px 20px',
+        }}
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 50 }}
+        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+      >
+        <div style={{ maxWidth: '1600px', margin: '0 auto', position: 'relative' }}>
+          
+          <button
+            onClick={onClose}
+            style={{
+              position: 'fixed',
+              top: '40px',
+              right: '40px',
+              background: 'rgba(255,255,255,0.1)',
+              border: 'none',
+              color: 'white',
+              padding: '12px',
+              borderRadius: '50%',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 1500,
+              backdropFilter: 'blur(10px)',
+              transition: 'background 0.3s'
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.background = 'var(--primary-red)'}
+            onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
           >
-            ALL PHOTOS
-          </motion.h2>
-          <motion.p
-            style={{ color: 'var(--primary-red)', textTransform: 'uppercase', letterSpacing: '4px', fontWeight: 'bold', fontSize: '14px', margin: 0 }}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            A unified collection of our work
-          </motion.p>
-        </div>
+            <X size={28} />
+          </button>
 
-        <div style={{ maxWidth: '1600px', margin: '0 auto', padding: '0 20px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '80px', marginTop: '40px' }}>
+            <motion.h2
+              className="display-text"
+              style={{ fontSize: 'clamp(3rem, 5vw, 4.5rem)', margin: '0 0 10px 0' }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              ALL PHOTOS
+            </motion.h2>
+            <motion.p
+              style={{ color: 'var(--primary-red)', textTransform: 'uppercase', letterSpacing: '4px', fontWeight: 'bold', fontSize: '14px', margin: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              A unified collection of our work
+            </motion.p>
+          </div>
+
           <MasonryGrid
             items={allImages}
             gap="16px"
@@ -74,9 +119,9 @@ const FullGallery = () => {
             )}
           />
         </div>
-      </section>
+      </motion.div>
 
-      {/* Enlarged Single Image Modal */}
+      {/* Enlarged Single Image Modal (Double nested) */}
       <AnimatePresence>
         {enlargedImage && (
           <motion.div

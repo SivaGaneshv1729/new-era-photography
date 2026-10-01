@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { InfiniteSlider } from './InfiniteSlider';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronDown } from 'lucide-react';
+import FullGallery from './FullGallery';
 
 const images = [
   "/Cover/Short films.png",
@@ -16,6 +17,7 @@ const images = [
 
 const InfiniteGallery = () => {
   const [enlargedImage, setEnlargedImage] = useState(null);
+  const [showFullGallery, setShowFullGallery] = useState(false);
 
   return (
     <>
@@ -79,7 +81,7 @@ const InfiniteGallery = () => {
         
         {/* View More Down Arrow */}
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: '60px' }}>
-          <a href="#full-gallery" style={{ textDecoration: 'none' }}>
+          <div onClick={() => setShowFullGallery(true)}>
             <motion.div
               style={{
                 display: 'flex',
@@ -97,7 +99,7 @@ const InfiniteGallery = () => {
               </span>
               <ChevronDown size={32} />
             </motion.div>
-          </a>
+          </div>
         </div>
       </section>
 
@@ -160,6 +162,12 @@ const InfiniteGallery = () => {
               onClick={(e) => e.stopPropagation()}
             />
           </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {showFullGallery && (
+          <FullGallery onClose={() => setShowFullGallery(false)} />
         )}
       </AnimatePresence>
     </>

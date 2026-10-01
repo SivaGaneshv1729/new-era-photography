@@ -96,11 +96,11 @@ const Team = () => {
               className="team-card"
             >
               {/* Image Container */}
-              <div style={{ width: '100%', aspectRatio: '1/1', overflow: 'hidden', borderRadius: '16px', backgroundColor: 'var(--bg-dark)', border: '1px solid rgba(255,255,255,0.05)' }}>
+              <div style={{ width: '100%', overflow: 'hidden', borderRadius: '16px' }}>
                 <img
                   src={value.image}
                   alt={value.name}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'filter 0.5s ease', filter: 'grayscale(100%)' }}
+                  style={{ width: '100%', height: 'auto', display: 'block', transition: 'filter 0.5s ease', filter: 'grayscale(100%)' }}
                   onMouseEnter={(e) => e.currentTarget.style.filter = 'grayscale(0%)'}
                   onMouseLeave={(e) => e.currentTarget.style.filter = 'grayscale(100%)'}
                 />

@@ -52,11 +52,10 @@ const NotchCornerRightWing = ({ className, style }) => (
 
 const navItems = [
   { id: 'home', label: 'Home', href: '#home' },
-  { id: 'gallery', label: 'Gallery', href: '#gallery' },
   { id: 'about', label: 'About', href: '#about' },
+  { id: 'gallery', label: 'Gallery', href: '#gallery' },
   { id: 'team', label: 'Team', href: '#team' },
-  { id: 'testimonials', label: 'Feedback', href: '#testimonials' },
-  { id: 'contact', label: 'Contact', href: '#contact' },
+  { id: 'testimonials', label: 'Feedback', href: '#testimonials' }
 ];
 
 const DynamicNotch = () => {

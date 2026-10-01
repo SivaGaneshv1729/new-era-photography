@@ -1,5 +1,5 @@
 import React from 'react';
-import { Globe } from 'lucide-react';
+import { Globe, Instagram } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const LinkedinIcon = ({ size = 16 }) => (
@@ -29,25 +29,25 @@ const teamData = [
     name: "Logan Dang",
     role: "Lead Cinematographer",
     image: "https://cdn.21st.dev/assets/localized/a15173e6535b3403cf75d3a251b152b66cb158540ae6fe0cef584477d25c296d.png",
-    socials: { website: "#", linkedin: "#" },
+    socials: { website: "#", linkedin: "#", instagram: "#" },
   },
   {
     name: "Ana Belić",
     role: "Art Director",
     image: "https://cdn.21st.dev/assets/localized/642c6a86e5fbd3b161614c1493159ed72ba9f28fd64bbd3dac1aaf902841acbb.png",
-    socials: { website: "#", linkedin: "#" },
+    socials: { website: "#", linkedin: "#", instagram: "#" },
   },
   {
     name: "Brian Hanley",
     role: "Creative Producer",
     image: "https://cdn.21st.dev/assets/localized/16f617e9aa4511f685dd437418d90bcb53817ed5031cd822d60db98848ad536f.png",
-    socials: { website: "#", linkedin: "#" },
+    socials: { website: "#", linkedin: "#", instagram: "#" },
   },
   {
     name: "Darko Stanković",
     role: "Lead Photographer",
     image: "https://cdn.21st.dev/assets/localized/90f8eb479a4a56a4da83ebf6be45a9ff73515b0af2cff481f665ea40189a8137.png",
-    socials: { website: "#", linkedin: "#" },
+    socials: { website: "#", linkedin: "#", instagram: "#" },
   },
 ];
 
@@ -140,6 +140,17 @@ const Team = () => {
                     onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.05)'; e.currentTarget.style.transform = 'translateY(0)'; }}
                   >
                     <LinkedinIcon size={18} />
+                  </a>
+                  <a
+                    href={value.socials.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="team-social-icon"
+                    style={{ padding: '10px', borderRadius: '50%', backgroundColor: 'rgba(255,255,255,0.05)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.3s ease' }}
+                    onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'var(--primary-red)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.05)'; e.currentTarget.style.transform = 'translateY(0)'; }}
+                  >
+                    <Instagram size={18} />
                   </a>
                 </div>
               </div>

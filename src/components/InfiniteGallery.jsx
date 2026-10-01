@@ -79,7 +79,7 @@ const InfiniteGallery = () => {
         
         {/* View More Down Arrow */}
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: '60px' }}>
-          <a href="#imp-photos" style={{ textDecoration: 'none' }}>
+          <a href="#full-gallery" style={{ textDecoration: 'none' }}>
             <motion.div
               style={{
                 display: 'flex',

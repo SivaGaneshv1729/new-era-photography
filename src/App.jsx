@@ -5,7 +5,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Gallery from './components/Gallery';
 import InfiniteGallery from './components/InfiniteGallery';
-import ImpPhotos from './components/ImpPhotos';
+import FullGallery from './components/FullGallery';
 import Footer from './components/Contact';
 import './index.css';
 
@@ -33,7 +33,7 @@ function App() {
         <About />
         <Gallery />
         <InfiniteGallery />
-        <ImpPhotos />
+        <FullGallery />
       </main>
       <Footer />
     </>

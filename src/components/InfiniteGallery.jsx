@@ -165,11 +165,7 @@ const InfiniteGallery = () => {
         )}
       </AnimatePresence>
 
-      <AnimatePresence>
-        {showFullGallery && (
-          <FullGallery onClose={() => setShowFullGallery(false)} />
-        )}
-      </AnimatePresence>
+      <FullGallery isOpen={showFullGallery} onClose={() => setShowFullGallery(false)} />
     </>
   );
 };

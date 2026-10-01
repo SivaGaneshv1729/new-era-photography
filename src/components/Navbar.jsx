@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Search, Phone, Menu, X } from 'lucide-react';
-import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
+import { motion, AnimatePresence, LayoutGroup, useScroll, useMotionValueEvent } from 'framer-motion';
 
 const navItems = [
   { id: 'home', label: 'Home', href: '#home' },
@@ -13,6 +13,19 @@ const navItems = [
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeId, setActiveId] = useState('home');
+  const [isHidden, setIsHidden] = useState(false);
+  const [isBookHovered, setIsBookHovered] = useState(false);
+
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious();
+    if (latest > previous && latest > 150) {
+      setIsHidden(true); // Hide when scrolling down
+    } else {
+      setIsHidden(false); // Show when scrolling up
+    }
+  });
 
   const handleSelect = (id, href) => {
     setActiveId(id);
@@ -23,23 +36,47 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="navbar" style={{ padding: '20px 40px' }}>
+      <motion.nav 
+        className="navbar" 
+        variants={{
+          visible: { y: 0, opacity: 1 },
+          hidden: { y: "-100%", opacity: 0 }
+        }}
+        animate={isHidden ? "hidden" : "visible"}
+        transition={{ duration: 0.35, ease: "easeInOut" }}
+        style={{ 
+          padding: '20px 40px', 
+          position: 'fixed', 
+          top: 0, 
+          left: 0, 
+          right: 0, 
+          zIndex: 1000, 
+          display: 'flex', 
+          justifyContent: 'space-between', 
+          alignItems: 'center',
+          pointerEvents: isHidden ? 'none' : 'auto'
+        }}
+      >
         {/* Left: Logo */}
-        <div className="nav-logo display-text" style={{ fontSize: '24px', letterSpacing: '2px', cursor: 'pointer', zIndex: 100 }}>
+        <div className="nav-logo display-text" style={{ fontSize: '24px', letterSpacing: '2px', cursor: 'pointer', zIndex: 100, flex: 1 }}>
           NEW ERA
         </div>
 
-        {/* Center: Black Pill Background with White Active States */}
+        {/* Center: Exactly middle, Black Pill Background with White Active States */}
         <div 
           className="nav-links-container"
           style={{ 
+            position: 'absolute',
+            left: '50%',
+            transform: 'translateX(-50%)',
             display: 'flex', 
             alignItems: 'center', 
             backgroundColor: 'black', 
             padding: '6px', 
             borderRadius: '40px',
             gap: '4px',
-            boxShadow: '0 4px 20px rgba(0,0,0,0.5)'
+            boxShadow: '0 4px 20px rgba(0,0,0,0.5)',
+            zIndex: 100
           }}
         >
           <LayoutGroup>
@@ -60,7 +97,10 @@ const Navbar = () => {
                   cursor: 'pointer',
                   zIndex: 1,
                   transition: 'color 0.3s',
-                  outline: 'none'
+                  outline: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
                 }}
                 onMouseEnter={(e) => { if (activeId !== item.id) e.currentTarget.style.color = 'white'; }}
                 onMouseLeave={(e) => { if (activeId !== item.id) e.currentTarget.style.color = 'rgba(255,255,255,0.7)'; }}
@@ -84,37 +124,55 @@ const Navbar = () => {
           </LayoutGroup>
         </div>
         
-        {/* Right: Icons & White Book Button */}
-        <div className="nav-icons" style={{ display: 'flex', alignItems: 'center', gap: '20px', zIndex: 100 }}>
+        {/* Right: Icons & Expandable White Book Button */}
+        <div className="nav-icons" style={{ display: 'flex', alignItems: 'center', gap: '20px', zIndex: 100, flex: 1, justifyContent: 'flex-end' }}>
           <Search size={20} style={{ cursor: 'pointer' }} className="nav-search-icon" />
           
-          <div 
+          <motion.div 
             className="nav-book-btn" 
+            onMouseEnter={() => setIsBookHovered(true)}
+            onMouseLeave={() => setIsBookHovered(false)}
+            animate={{
+              padding: isBookHovered ? "10px 24px" : "12px",
+              borderRadius: isBookHovered ? "30px" : "50%",
+            }}
+            transition={{ type: "spring", stiffness: 400, damping: 30 }}
             style={{ 
               display: 'flex', 
               alignItems: 'center', 
-              gap: '8px', 
               cursor: 'pointer', 
               backgroundColor: 'white', 
               color: 'black',
-              padding: '10px 20px', 
-              borderRadius: '30px', 
-              fontSize: '14px', 
-              fontWeight: 'bold', 
-              textTransform: 'uppercase',
-              transition: 'transform 0.2s ease, box-shadow 0.2s ease'
+              boxShadow: '0 4px 15px rgba(0,0,0,0.1)',
+              overflow: 'hidden'
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 5px 15px rgba(255,255,255,0.2)'; }}
-            onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; }}
           >
-            <Phone size={16} /> <span className="nav-book-text">Book a Call</span>
-          </div>
+            <Phone size={18} style={{ flexShrink: 0 }} /> 
+            <AnimatePresence>
+              {isBookHovered && (
+                <motion.span
+                  initial={{ width: 0, opacity: 0, marginLeft: 0 }}
+                  animate={{ width: "auto", opacity: 1, marginLeft: "8px" }}
+                  exit={{ width: 0, opacity: 0, marginLeft: 0 }}
+                  transition={{ duration: 0.2 }}
+                  style={{ 
+                    fontSize: '14px', 
+                    fontWeight: 'bold', 
+                    textTransform: 'uppercase',
+                    whiteSpace: 'nowrap'
+                  }}
+                >
+                  Book a Call
+                </motion.span>
+              )}
+            </AnimatePresence>
+          </motion.div>
 
           <div className="nav-hamburger" onClick={() => setIsMenuOpen(true)}>
             <Menu size={24} style={{ cursor: 'pointer' }} />
           </div>
         </div>
-      </nav>
+      </motion.nav>
 
       {/* Mobile Fullscreen Menu */}
       <AnimatePresence>

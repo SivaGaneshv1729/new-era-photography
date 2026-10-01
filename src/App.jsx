@@ -6,6 +6,7 @@ import About from './components/About';
 import Gallery from './components/Gallery';
 import InfiniteGallery from './components/InfiniteGallery';
 import Team from './components/Team';
+import Testimonials from './components/Testimonials';
 import Footer from './components/Contact';
 import './index.css';
 
@@ -34,6 +35,7 @@ function App() {
         <Gallery />
         <InfiniteGallery />
         <Team />
+        <Testimonials />
       </main>
       <Footer />
     </>

@@ -14,9 +14,10 @@ const Navbar = () => {
 
         <div className="nav-links">
           <a href="#home">Home</a>
-          <a href="#gallery">Gallery</a>
           <a href="#about">About</a>
-          <a href="#contact">Contact</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#team">Team</a>
+          <a href="#testimonials">Feedback</a>
         </div>
         
         <div className="nav-icons" style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
@@ -77,9 +78,10 @@ const Navbar = () => {
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '40px', alignItems: 'center', fontSize: '28px', textTransform: 'uppercase', letterSpacing: '4px' }} className="display-text">
               <a href="#home" onClick={() => setIsMenuOpen(false)} style={{ transition: 'color 0.3s' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary-red)'} onMouseLeave={(e) => e.currentTarget.style.color = 'white'}>Home</a>
-              <a href="#gallery" onClick={() => setIsMenuOpen(false)} style={{ transition: 'color 0.3s' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary-red)'} onMouseLeave={(e) => e.currentTarget.style.color = 'white'}>Gallery</a>
               <a href="#about" onClick={() => setIsMenuOpen(false)} style={{ transition: 'color 0.3s' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary-red)'} onMouseLeave={(e) => e.currentTarget.style.color = 'white'}>About</a>
-              <a href="#contact" onClick={() => setIsMenuOpen(false)} style={{ transition: 'color 0.3s' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary-red)'} onMouseLeave={(e) => e.currentTarget.style.color = 'white'}>Contact</a>
+              <a href="#gallery" onClick={() => setIsMenuOpen(false)} style={{ transition: 'color 0.3s' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary-red)'} onMouseLeave={(e) => e.currentTarget.style.color = 'white'}>Gallery</a>
+              <a href="#team" onClick={() => setIsMenuOpen(false)} style={{ transition: 'color 0.3s' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary-red)'} onMouseLeave={(e) => e.currentTarget.style.color = 'white'}>Team</a>
+              <a href="#testimonials" onClick={() => setIsMenuOpen(false)} style={{ transition: 'color 0.3s' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary-red)'} onMouseLeave={(e) => e.currentTarget.style.color = 'white'}>Feedback</a>
             </div>
           </motion.div>
         )}

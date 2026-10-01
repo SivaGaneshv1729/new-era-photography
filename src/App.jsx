@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Lenis from 'lenis';
-import DynamicNotch from './components/DynamicNotch';
+import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Gallery from './components/Gallery';
@@ -28,7 +28,7 @@ function App() {
 
   return (
     <>
-      <DynamicNotch />
+      <Navbar />
       <main>
         <Hero />
         <About />

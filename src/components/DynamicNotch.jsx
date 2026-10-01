@@ -4,8 +4,8 @@ import { ChevronDown, ChevronUp } from 'lucide-react';
 
 const NotchLeftWing = ({ className, style }) => (
   <svg
-    width="20"
-    height="20"
+    width="24"
+    height="24"
     viewBox="0 0 20 20"
     className={className}
     style={{ position: 'absolute', right: '100%', top: 0, fill: 'var(--bg-black)', pointerEvents: 'none', ...style }}
@@ -16,8 +16,8 @@ const NotchLeftWing = ({ className, style }) => (
 
 const NotchRightWing = ({ className, style }) => (
   <svg
-    width="20"
-    height="20"
+    width="24"
+    height="24"
     viewBox="0 0 20 20"
     className={className}
     style={{ position: 'absolute', left: '100%', top: 0, fill: 'var(--bg-black)', pointerEvents: 'none', ...style }}
@@ -28,8 +28,8 @@ const NotchRightWing = ({ className, style }) => (
 
 const NotchCornerLeftWing = ({ className, style }) => (
   <svg
-    width="20"
-    height="20"
+    width="24"
+    height="24"
     viewBox="0 0 20 20"
     className={className}
     style={{ position: 'absolute', left: 0, top: '100%', fill: 'var(--bg-black)', pointerEvents: 'none', ...style }}
@@ -40,8 +40,8 @@ const NotchCornerLeftWing = ({ className, style }) => (
 
 const NotchCornerRightWing = ({ className, style }) => (
   <svg
-    width="20"
-    height="20"
+    width="24"
+    height="24"
     viewBox="0 0 20 20"
     className={className}
     style={{ position: 'absolute', right: 0, top: '100%', fill: 'var(--bg-black)', pointerEvents: 'none', ...style }}
@@ -93,10 +93,10 @@ const DynamicNotch = () => {
               position: 'fixed',
               left: 0,
               top: 0,
-              height: '50px',
-              padding: '0 24px',
+              height: '70px',
+              padding: '0 32px',
               backgroundColor: 'var(--bg-black)',
-              borderBottomRightRadius: '24px',
+              borderBottomRightRadius: '28px',
               display: 'flex',
               alignItems: 'center',
               userSelect: 'none',
@@ -104,7 +104,7 @@ const DynamicNotch = () => {
               zIndex: 1000
             }}
           >
-            <div className="display-text" style={{ fontSize: '20px', letterSpacing: '2px', color: 'white', fontWeight: 'bold' }}>
+            <div className="display-text" style={{ fontSize: '28px', letterSpacing: '2px', color: 'white', fontWeight: 'bold' }}>
               NEW ERA
             </div>
             <NotchRightWing />
@@ -118,11 +118,11 @@ const DynamicNotch = () => {
               left: '50%',
               top: 0,
               transform: 'translateX(-50%)',
-              height: '55px',
-              padding: '0 16px',
+              height: '75px',
+              padding: '0 24px',
               backgroundColor: 'var(--bg-black)',
-              borderBottomLeftRadius: '24px',
-              borderBottomRightRadius: '24px',
+              borderBottomLeftRadius: '28px',
+              borderBottomRightRadius: '28px',
               display: 'flex',
               alignItems: 'center',
               userSelect: 'none',
@@ -134,7 +134,7 @@ const DynamicNotch = () => {
             <NotchRightWing />
 
             <LayoutGroup>
-              <div style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
+              <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
                 {navItems.map((item) => (
                   <button
                     key={item.id}
@@ -144,8 +144,8 @@ const DynamicNotch = () => {
                       background: 'transparent',
                       border: 'none',
                       color: activeId === item.id ? 'var(--bg-black)' : 'var(--text-muted)',
-                      padding: '10px 18px',
-                      fontSize: '13px',
+                      padding: '12px 24px',
+                      fontSize: '15px',
                       textTransform: 'uppercase',
                       letterSpacing: '1px',
                       fontWeight: 'bold',
@@ -182,10 +182,10 @@ const DynamicNotch = () => {
               position: 'fixed',
               right: 0,
               top: 0,
-              height: '50px',
-              padding: '0 24px',
+              height: '70px',
+              padding: '0 32px',
               backgroundColor: 'var(--bg-black)',
-              borderBottomLeftRadius: '24px',
+              borderBottomLeftRadius: '28px',
               display: 'flex',
               alignItems: 'center',
               userSelect: 'none',
@@ -199,13 +199,19 @@ const DynamicNotch = () => {
             <a 
               href="#contact"
               style={{
-                color: 'white',
-                fontSize: '13px',
+                color: 'var(--bg-black)',
+                backgroundColor: 'white',
+                padding: '12px 24px',
+                borderRadius: '30px',
+                fontSize: '15px',
                 textTransform: 'uppercase',
                 letterSpacing: '1px',
                 fontWeight: 'bold',
-                textDecoration: 'none'
+                textDecoration: 'none',
+                transition: 'background 0.3s, color 0.3s'
               }}
+              onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'var(--primary-red)'; e.currentTarget.style.color = 'white'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'white'; e.currentTarget.style.color = 'var(--bg-black)'; }}
             >
               Book Now
             </a>
@@ -225,15 +231,15 @@ const DynamicNotch = () => {
               top: 0,
               transform: 'translateX(-50%)',
               backgroundColor: 'var(--bg-black)',
-              borderBottomLeftRadius: '24px',
-              borderBottomRightRadius: '24px',
-              padding: '12px 20px',
+              borderBottomLeftRadius: '28px',
+              borderBottomRightRadius: '28px',
+              padding: '16px 24px',
               display: 'flex',
               flexDirection: 'column',
               boxShadow: '0 10px 40px rgba(0,0,0,0.5)',
               zIndex: 1000,
-              width: '90%',
-              maxWidth: '400px'
+              width: '95%',
+              maxWidth: '500px'
             }}
           >
             <NotchLeftWing />
@@ -241,7 +247,7 @@ const DynamicNotch = () => {
 
             {/* Unified Horizontal Bar */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <div className="display-text" style={{ fontSize: '16px', letterSpacing: '2px', color: 'white', fontWeight: 'bold' }}>
+              <div className="display-text" style={{ fontSize: '22px', letterSpacing: '2px', color: 'white', fontWeight: 'bold' }}>
                 NEW ERA
               </div>
 
@@ -255,7 +261,7 @@ const DynamicNotch = () => {
                   display: 'flex',
                   alignItems: 'center',
                   gap: '8px',
-                  fontSize: '13px',
+                  fontSize: '15px',
                   textTransform: 'uppercase',
                   letterSpacing: '1px',
                   fontWeight: 'bold',
@@ -263,10 +269,10 @@ const DynamicNotch = () => {
                 }}
               >
                 {activeItem.label}
-                {isDropdownOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                {isDropdownOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
               </button>
 
-              <a href="#contact" style={{ color: 'var(--primary-red)', fontSize: '13px', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 'bold', textDecoration: 'none' }}>
+              <a href="#contact" style={{ color: 'var(--primary-red)', fontSize: '15px', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 'bold', textDecoration: 'none' }}>
                 Book
               </a>
             </div>
@@ -279,7 +285,7 @@ const DynamicNotch = () => {
                   animate={{ height: 'auto', opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.2 }}
-                  style={{ overflow: 'hidden', display: 'flex', flexDirection: 'column', gap: '4px', marginTop: '16px' }}
+                  style={{ overflow: 'hidden', display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '20px' }}
                 >
                   {navItems.map((item) => (
                     <button
@@ -289,10 +295,10 @@ const DynamicNotch = () => {
                         background: activeId === item.id ? 'white' : 'transparent',
                         border: 'none',
                         color: activeId === item.id ? 'var(--bg-black)' : 'white',
-                        padding: '12px 16px',
-                        borderRadius: '12px',
+                        padding: '16px 20px',
+                        borderRadius: '16px',
                         textAlign: 'left',
-                        fontSize: '13px',
+                        fontSize: '15px',
                         textTransform: 'uppercase',
                         letterSpacing: '1px',
                         fontWeight: 'bold',
@@ -305,7 +311,7 @@ const DynamicNotch = () => {
                     >
                       {item.label}
                       {activeId === item.id && (
-                        <div style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: 'var(--primary-red)' }} />
+                        <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: 'var(--primary-red)' }} />
                       )}
                     </button>
                   ))}
@@ -324,8 +330,8 @@ const DynamicNotch = () => {
                 style={{
                   position: 'fixed',
                   inset: 0,
-                  backgroundColor: 'rgba(0,0,0,0.6)',
-                  backdropFilter: 'blur(4px)',
+                  backgroundColor: 'rgba(0,0,0,0.7)',
+                  backdropFilter: 'blur(8px)',
                   zIndex: 999
                 }}
                 onClick={() => setIsDropdownOpen(false)}

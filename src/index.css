@@ -121,6 +121,10 @@ ul {
   cursor: pointer;
 }
 
+.nav-hamburger {
+  display: none;
+}
+
 /* Hero Section */
 .hero {
   position: relative;
@@ -560,8 +564,14 @@ ul {
   .navbar {
     padding: 20px;
   }
-  .nav-links {
+  .nav-links, .nav-search-icon, .nav-book-text {
     display: none;
+  }
+  .nav-hamburger {
+    display: block;
+  }
+  .nav-book-btn {
+    padding: 8px 12px !important;
   }
   .hero-floating-card, .hero-quote, .hero-gallery-btn {
     display: none;

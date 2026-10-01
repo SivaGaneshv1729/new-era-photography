@@ -12,7 +12,7 @@ const Navbar = () => {
           NEW ERA
         </div>
 
-        <div className="nav-links" style={{ display: 'flex', gap: '30px' }}>
+        <div className="nav-links">
           <a href="#home">Home</a>
           <a href="#gallery">Gallery</a>
           <a href="#about">About</a>

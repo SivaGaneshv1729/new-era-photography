@@ -46,12 +46,12 @@ const InfiniteGallery = () => {
 
         {/* Slider 1 - Left to right */}
         {/* Set durationOnHover to a huge number to effectively pause it */}
-        <InfiniteSlider gap={16} duration={40} durationOnHover={100000}>
+        <InfiniteSlider gap={24} duration={40} durationOnHover={100000}>
           {images.map((src, idx) => (
             <div key={idx} className="infinite-slider-card" style={{ flexShrink: 0, borderRadius: '12px', overflow: 'hidden', position: 'relative' }}>
-              <img 
-                src={src} 
-                alt={`Gallery preview ${idx}`} 
+              <img
+                src={src}
+                alt={`Gallery preview ${idx}`}
                 style={{ width: '100%', height: '100%', objectFit: 'cover', cursor: 'pointer', transition: 'transform 0.3s' }}
                 onClick={() => setEnlargedImage(src)}
                 onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
@@ -64,12 +64,12 @@ const InfiniteGallery = () => {
         <div style={{ height: '24px' }} />
 
         {/* Slider 2 - Right to left (reversed) */}
-        <InfiniteSlider gap={16} duration={45} reverse durationOnHover={100000}>
+        <InfiniteSlider gap={24} duration={45} reverse durationOnHover={100000}>
           {[...images].reverse().map((src, idx) => (
             <div key={idx} className="infinite-slider-card" style={{ flexShrink: 0, borderRadius: '12px', overflow: 'hidden', position: 'relative' }}>
-              <img 
-                src={src} 
-                alt={`Gallery preview reverse ${idx}`} 
+              <img
+                src={src}
+                alt={`Gallery preview reverse ${idx}`}
                 style={{ width: '100%', height: '100%', objectFit: 'cover', cursor: 'pointer', transition: 'transform 0.3s' }}
                 onClick={() => setEnlargedImage(src)}
                 onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
@@ -78,7 +78,7 @@ const InfiniteGallery = () => {
             </div>
           ))}
         </InfiniteSlider>
-        
+
         {/* View More Down Arrow */}
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: '60px' }}>
           <div onClick={() => setShowFullGallery(true)}>

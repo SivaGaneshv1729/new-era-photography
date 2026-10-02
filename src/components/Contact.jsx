@@ -1,45 +1,45 @@
 import React from 'react';
 
-const Contact = () => {
+const Footer = () => {
   return (
-    <footer className="footer" id="contact">
+    <footer className="footer">
       <div className="footer-content">
         <div className="footer-col">
           <h5>QUICK LINKS</h5>
           <ul>
             <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#features">Features</a></li>
             <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#team">Team</a></li>
-            <li><a href="#testimonials">Feedback</a></li>
+            <li><a href="#contact">Contact</a></li>
           </ul>
         </div>
-        
+
         <div className="footer-center">
-          <h4 className="display-text" style={{ fontSize: '2.5rem', margin: '0 0 10px 0' }}>KARNA</h4>
-          <p style={{ letterSpacing: '1px' }}>+1 (555) 019-8273</p>
-          <p style={{ letterSpacing: '1px' }}>HELLO@KARNA.COM</p>
-          <p style={{ marginTop: '10px', color: 'var(--text-muted)' }}>123 CREATIVE AVE, STUDIO 4,</p>
-          <p style={{ color: 'var(--text-muted)' }}>NEW YORK, NY 10001</p>
+          <h4 className="display-text">OPTIQ</h4>
+          <p>+1 (222) 345-6789</p>
+          <p>SUPPORT@OPTIQ.COM</p>
+          <p>123 LENS AVENUE, TORONTO,</p>
+          <p>CANADA</p>
         </div>
-        
+
         <div className="footer-col" style={{ textAlign: 'right' }}>
           <h5>SOCIAL MEDIA</h5>
           <ul>
             <li><a href="#">Instagram</a></li>
-            <li><a href="#">Vimeo</a></li>
-            <li><a href="#">LinkedIn</a></li>
-            <li><a href="#">Behance</a></li>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">YouTube</a></li>
             <li><a href="#">Twitter</a></li>
+            <li><a href="#">TikTok</a></li>
           </ul>
         </div>
       </div>
-      
-      <div className="footer-bg-text" style={{ userSelect: 'none' }}>
-        KARNA
+
+      <div className="footer-bg-text">
+        INSTA
       </div>
     </footer>
   );
 };
 
-export default Contact;
+export default Footer;

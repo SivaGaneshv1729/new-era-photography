@@ -67,6 +67,12 @@ const teamData = [
     image: "https://cdn.21st.dev/assets/localized/90f8eb479a4a56a4da83ebf6be45a9ff73515b0af2cff481f665ea40189a8137.png",
     socials: { website: "#", linkedin: "#", instagram: "#" },
   },
+  {
+    name: "Elena Rostova",
+    role: "Lead Editor",
+    image: "https://cdn.21st.dev/assets/localized/a15173e6535b3403cf75d3a251b152b66cb158540ae6fe0cef584477d25c296d.png",
+    socials: { website: "#", linkedin: "#", instagram: "#" },
+  },
 ];
 
 const Team = () => {
@@ -102,7 +108,7 @@ const Team = () => {
         </motion.div>
 
         {/* Team Grid */}
-        <div className="team-grid" style={{ width: '100%', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '30px' }}>
+        <div className="team-grid" style={{ width: '100%', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '30px' }}>
           {teamData.map((value, index) => (
             <motion.div
               key={index}

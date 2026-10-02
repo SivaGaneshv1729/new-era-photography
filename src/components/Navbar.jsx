@@ -15,6 +15,13 @@ const Navbar = () => {
   const [activeId, setActiveId] = useState('home');
   const [isHidden, setIsHidden] = useState(false);
   const [isBookHovered, setIsBookHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth <= 1024 : false);
+
+  React.useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 1024);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const { scrollY } = useScroll();
 
@@ -62,9 +69,10 @@ const Navbar = () => {
           NEW ERA
         </div>
 
-        {/* Center: Exactly middle, Black Pill Background with White Active States */}
-        <div 
-          className="nav-links-container"
+        {/* Center: Exactly middle, Black Pill Background with White Active States (Hidden on Mobile) */}
+        {!isMobile && (
+          <div 
+            className="nav-links-container"
           style={{ 
             position: 'absolute',
             left: '50%',
@@ -123,14 +131,15 @@ const Navbar = () => {
             ))}
           </LayoutGroup>
         </div>
+        )}
         
         {/* Right: Icons & Expandable White Book Button */}
         <div className="nav-icons" style={{ display: 'flex', alignItems: 'center', gap: '20px', zIndex: 100, flex: 1, justifyContent: 'flex-end' }}>
-          <Search size={20} style={{ cursor: 'pointer' }} className="nav-search-icon" />
           
-          <motion.div 
-            className="nav-book-btn" 
-            onMouseEnter={() => setIsBookHovered(true)}
+          {!isMobile && (
+            <motion.div 
+              className="nav-book-btn" 
+              onMouseEnter={() => setIsBookHovered(true)}
             onMouseLeave={() => setIsBookHovered(false)}
             animate={{
               padding: isBookHovered ? "10px 24px" : "12px",
@@ -167,6 +176,7 @@ const Navbar = () => {
               )}
             </AnimatePresence>
           </motion.div>
+          )}
 
           <div className="nav-hamburger" onClick={() => setIsMenuOpen(true)}>
             <Menu size={24} style={{ cursor: 'pointer' }} />

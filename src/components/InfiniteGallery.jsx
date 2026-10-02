@@ -46,7 +46,7 @@ const InfiniteGallery = () => {
 
         {/* Slider 1 - Left to right */}
         {/* Set durationOnHover to a huge number to effectively pause it */}
-        <InfiniteSlider gap={1} duration={40} durationOnHover={100000}>
+        <InfiniteSlider gap={16} duration={40} durationOnHover={100000}>
           {images.map((src, idx) => (
             <div key={idx} className="infinite-slider-card" style={{ flexShrink: 0, borderRadius: '12px', overflow: 'hidden', position: 'relative' }}>
               <img 
@@ -64,7 +64,7 @@ const InfiniteGallery = () => {
         <div style={{ height: '24px' }} />
 
         {/* Slider 2 - Right to left (reversed) */}
-        <InfiniteSlider gap={1} duration={45} reverse durationOnHover={100000}>
+        <InfiniteSlider gap={16} duration={45} reverse durationOnHover={100000}>
           {[...images].reverse().map((src, idx) => (
             <div key={idx} className="infinite-slider-card" style={{ flexShrink: 0, borderRadius: '12px', overflow: 'hidden', position: 'relative' }}>
               <img 

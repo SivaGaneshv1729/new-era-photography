@@ -66,7 +66,7 @@ const Navbar = () => {
       >
         {/* Left: Logo */}
         <div className="nav-logo display-text" style={{ fontSize: '24px', letterSpacing: '2px', cursor: 'pointer', zIndex: 100, flex: 1 }}>
-          NEW ERA
+          KARNA
         </div>
 
         {/* Center: Exactly middle, Black Pill Background with White Active States (Hidden on Mobile) */}

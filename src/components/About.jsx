@@ -32,7 +32,7 @@ const About = () => {
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6, delay: 0.2 }}
       >
-        New Era Photography was born from a simple belief: every fleeting moment holds a story worth preserving. We started in a small studio with nothing but a vintage lens and an obsession for finding the extraordinary in the everyday.
+        Karna was born from a simple belief: every fleeting moment holds a story worth preserving. Founded as a bold creative startup by BFA (Bachelor of Fine Arts) students, we have evolved into an experienced team backed by a rich portfolio of work.
       </motion.p>
 
       <motion.p
@@ -42,7 +42,7 @@ const About = () => {
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6, delay: 0.3 }}
       >
-        To us, photography is more than just pressing a shutter. It is the art of freezing time, capturing raw emotion, and painting with light. Whether it’s the quiet intimacy of a short film or the high-energy pulse of a fashion shoot, we pour our soul into ensuring your legacy is immortalized in its truest, most beautiful form.
+        To us, visual storytelling is far more than just pressing a shutter. Driven by ultimate creativity, we craft high-impact commercials, narrative short films, sleek product showcases, high-energy fashion shoots, and compelling documentaries—delivering whatever our clients need with unwavering dedication, true to our name, Karna. We’d rather let our craft speak for itself—scroll down to experience our work.
       </motion.p>
     </div>
   );

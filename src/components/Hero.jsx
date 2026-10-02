@@ -16,17 +16,17 @@ const Hero = () => {
         <motion.h1 
           className="display-text" 
           style={{ 
-            fontSize: 'clamp(3rem, 8vw, 7rem)', 
+            fontSize: 'clamp(4rem, 12vw, 10rem)', 
             color: 'white', 
             margin: 0,
             textTransform: 'uppercase',
-            letterSpacing: '5px',
-            lineHeight: '1.1'
+            letterSpacing: '8px',
+            lineHeight: '1'
           }}
           animate={isPaused ? { scale: 1 } : { scale: [0.98, 1.05] }}
           transition={{ duration: 16, repeat: Infinity, repeatType: 'reverse', ease: "linear" }}
         >
-          New Era<br/>Photography
+          KARNA
         </motion.h1>
       </motion.div>
 

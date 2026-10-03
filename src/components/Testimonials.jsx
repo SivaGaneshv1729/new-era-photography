@@ -51,9 +51,27 @@ const testimonials = [
 const Testimonials = () => {
   return (
     <section id="testimonials" style={{ padding: '120px 0', backgroundColor: 'var(--bg-black)', overflow: 'hidden', position: 'relative' }}>
-      <div style={{ maxWidth: '1400px', margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '60px' }}>
-        
-        {/* Header Section */}
+      
+      {/* Massive Background Text */}
+      <div style={{
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        fontFamily: 'var(--font-display)',
+        fontSize: 'clamp(6rem, 25vw, 35rem)',
+        color: 'rgba(255, 255, 255, 0.03)',
+        textAlign: 'center',
+        lineHeight: '0.75',
+        whiteSpace: 'nowrap',
+        userSelect: 'none',
+        pointerEvents: 'none',
+        zIndex: 0
+      }}>
+        VOICES
+      </div>
+
+      <div style={{ maxWidth: '1400px', margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '60px', position: 'relative', zIndex: 10 }}>
         <motion.div
           initial={{ y: -40, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}

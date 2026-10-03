@@ -50,8 +50,27 @@ const About = () => {
   return (
     <section id="about" style={{ position: 'relative', overflow: 'hidden', backgroundColor: 'var(--bg-black)', paddingTop: '150px' }}>
       
+      {/* Massive Background Text */}
+      <div style={{
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        fontFamily: 'var(--font-display)',
+        fontSize: 'clamp(6rem, 25vw, 35rem)',
+        color: 'rgba(255, 255, 255, 0.03)',
+        textAlign: 'center',
+        lineHeight: '0.75',
+        whiteSpace: 'nowrap',
+        userSelect: 'none',
+        pointerEvents: 'none',
+        zIndex: 0
+      }}>
+        ORIGIN
+      </div>
+
       {/* Centered Title */}
-      <div style={{ textAlign: 'center', marginBottom: '60px', padding: '0 20px' }}>
+      <div style={{ textAlign: 'center', marginBottom: '60px', padding: '0 20px', position: 'relative', zIndex: 10 }}>
         <motion.p
           style={{ color: 'var(--primary-red)', textTransform: 'uppercase', letterSpacing: '4px', fontWeight: 'bold', fontSize: '14px', margin: '0 0 10px 0' }}
           initial={{ opacity: 0, y: 20 }}

@@ -21,8 +21,28 @@ const InfiniteGallery = () => {
 
   return (
     <>
-      <section id="infinite-gallery" style={{ paddingBottom: '60px', paddingTop: '120px', overflow: 'hidden' }}>
-        <div style={{ textAlign: 'center', marginBottom: '80px', padding: '0 20px' }}>
+      <section id="infinite-gallery" style={{ paddingBottom: '60px', paddingTop: '120px', overflow: 'hidden', position: 'relative' }}>
+        
+        {/* Massive Background Text */}
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          fontFamily: 'var(--font-display)',
+          fontSize: 'clamp(6rem, 25vw, 35rem)',
+          color: 'rgba(255, 255, 255, 0.03)',
+          textAlign: 'center',
+          lineHeight: '0.75',
+          whiteSpace: 'nowrap',
+          userSelect: 'none',
+          pointerEvents: 'none',
+          zIndex: 0
+        }}>
+          MOMENTS
+        </div>
+
+        <div style={{ textAlign: 'center', marginBottom: '80px', padding: '0 20px', position: 'relative', zIndex: 10 }}>
           <motion.h2
             className="display-text"
             style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', margin: '0 0 10px 0' }}
